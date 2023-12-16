@@ -1,7 +1,7 @@
 package src.data;
 
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import src.output.ReceiptFileUpdater;
 import src.output.TXTReceiptFileUpdater;
@@ -10,12 +10,12 @@ import src.output.XMLReceiptFileUpdater;
 public class Salesman {
 	private String name;
 	private String afm;
-	private Vector <Receipt> allReceipts;
+	private ArrayList<Receipt> allReceipts;
 	private ReceiptFileUpdater fileUpdater;
 	
 	
 	public Salesman(){
-		allReceipts = new Vector<Receipt>();
+		allReceipts = new ArrayList<Receipt>();
 	}
 	
 	public void setFileType(String fileType) {
@@ -26,7 +26,7 @@ public class Salesman {
 			fileUpdater = new XMLReceiptFileUpdater();
 		}	
 	}
-	public Vector<Receipt> getReceipts(){
+	public ArrayList<Receipt> getReceipts(){
 		return allReceipts;
 
 	}

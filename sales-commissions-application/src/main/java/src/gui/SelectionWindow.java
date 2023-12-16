@@ -454,7 +454,7 @@ public class SelectionWindow extends JDialog {
 		else{
 			
 			addReceipt();
-			appendFile();
+			updateFile();
 			
 		}
 		receiptIDTextField.setText("");	
@@ -470,7 +470,7 @@ public class SelectionWindow extends JDialog {
 
 	}
 
-	private void appendFile(){
+	private void updateFile(){
 		selectedSalesman.getFileAppender().setReceiptID(receiptIDTextField.getText());
 		selectedSalesman.getFileAppender().setDate(dateTextField.getText());
 		selectedSalesman.getFileAppender().setKind(kindTextField.getText());
@@ -481,7 +481,7 @@ public class SelectionWindow extends JDialog {
 		selectedSalesman.getFileAppender().setCity(cityTextField.getText());
 		selectedSalesman.getFileAppender().setStreet(streetTextField.getText());
 		selectedSalesman.getFileAppender().setNumber(numberTextField.getText());
-		selectedSalesman.getFileAppender().appendFile();
+		selectedSalesman.getFileAppender().updateFile();
 	}
 	
 	private void addReceipt(){
@@ -489,13 +489,13 @@ public class SelectionWindow extends JDialog {
 		
 		//TODO: change these from objects to strings
 		if(kindTextField.equals("Shirts"))		
-			receipt = new Shirt();	
+			receipt.setKind("Shirt");	
 		else if (kindTextField.equals("Skirts"))
-			receipt = new Skirt();
+			receipt.setKind("Skirt");
 		else if (kindTextField.equals("Trousers"))
-			receipt = new Trouser();
+			receipt.setKind("Trouser");
 		else if(kindTextField.equals("Coats"))				
-			receipt = new Coat();
+			receipt.setKind("Coat");
 		try{
 			receipt.setReceiptID(Integer.parseInt(receiptIDTextField.getText()));			
 			receipt.setDate(dateTextField.getText());

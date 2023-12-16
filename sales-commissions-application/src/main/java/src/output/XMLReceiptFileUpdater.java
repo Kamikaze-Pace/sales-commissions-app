@@ -16,12 +16,12 @@ import org.w3c.dom.Node;
 
 public class XMLReceiptFileUpdater  extends ReceiptFileUpdater{
 
-public  void setFileToAppend(File fileToUpdate) {
+public  void setFileToUpdate(File fileToUpdate) {
 		
 		this.fileToUpdate = fileToUpdate;
 		
 	}
-	public void appendFile(){
+	public void updateFile(){
 
 		try{
 		
@@ -35,43 +35,43 @@ public  void setFileToAppend(File fileToUpdate) {
 			salesman.appendChild(receiptElem);		
 		
 			Element receiptIDElem = doc.createElement("ReceiptID");
-			receiptIDElem.appendChild(doc.createTextNode(receiptID));
+			receiptIDElem.appendChild(doc.createTextNode(Integer.toString(receipt.getReceiptID())));
 			receiptElem.appendChild(receiptIDElem);
 
 	       	Element dateElem = doc.createElement("Date");
-	       	dateElem.appendChild(doc.createTextNode(date));
+	       	dateElem.appendChild(doc.createTextNode(receipt.getDate()));
 	       	receiptElem.appendChild(dateElem);
        	
 	       	Element kindElem = doc.createElement("Kind");
-	       	kindElem.appendChild(doc.createTextNode(kind));
+	       	kindElem.appendChild(doc.createTextNode(receipt.getKind()));
 	       	receiptElem.appendChild(kindElem);
 	       	
 	       	Element salesElem = doc.createElement("Sales");
-	       	salesElem.appendChild(doc.createTextNode(sales));
+	       	salesElem.appendChild(doc.createTextNode(Double.toString(receipt.getSales())));
 	       	receiptElem.appendChild(salesElem);
 	       	
 	       	Element itemsElem = doc.createElement("Items");
-	       	itemsElem.appendChild(doc.createTextNode(items));
+	       	itemsElem.appendChild(doc.createTextNode(Integer.toString(receipt.getItems())));
 	       	receiptElem.appendChild(itemsElem);
 	       	
 	       	Element companyElem = doc.createElement("Company");
-			companyElem.appendChild(doc.createTextNode(company));
+			companyElem.appendChild(doc.createTextNode(receipt.getCompany().getName()));
 			receiptElem.appendChild(companyElem);
 	       	
 	       	Element countryElem = doc.createElement("Country");
-	       	countryElem.appendChild(doc.createTextNode(country));
+	       	countryElem.appendChild(doc.createTextNode(receipt.getCompany().getCompanyAddress().getCountry()));
 	       	receiptElem.appendChild(countryElem);
 	       	
 	       	Element cityElem = doc.createElement("City");
-	       	cityElem.appendChild(doc.createTextNode(city));
+	       	cityElem.appendChild(doc.createTextNode(receipt.getCompany().getCompanyAddress().getCity()));
 	       	receiptElem.appendChild(cityElem);
 	       	
 	       	Element streetElem = doc.createElement("Street");
-	       	streetElem.appendChild(doc.createTextNode(street));
+	       	streetElem.appendChild(doc.createTextNode(receipt.getCompany().getCompanyAddress().getStreet()));
 	       	receiptElem.appendChild(streetElem);
 	       	
 	       	Element numberElem = doc.createElement("Number");
-	       	numberElem.appendChild(doc.createTextNode(number));
+	       	numberElem.appendChild(doc.createTextNode(Integer.toString(receipt.getCompany().getCompanyAddress().getStreetNumber())));
 	       	receiptElem.appendChild(numberElem);
 	    
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();

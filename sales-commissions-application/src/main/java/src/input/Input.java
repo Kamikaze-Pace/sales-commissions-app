@@ -32,43 +32,40 @@ public abstract class Input {
 		kind  = new String("");
 	}
 	
-
 	
 	public void addSalesman() {
 		salesman.setName(name);
 		salesman.setAfm(afm);
 	}
 	
-	//TODO: change these objects to strings 
+	//changed from object to string
 	public void addReceipt( ){
-		Receipt receipt;			
-			if(kind.equals("Shirts")) {
-				receipt= new Shirt();
-
-			}
-			else if (kind.equals("Skirts")) {
-				receipt = new Skirt();
-
-			}
-			else if (kind.equals("Trousers")) {
-				receipt = new Trouser();
-
-			}
-			else {
-				receipt = new Coat();
-			}
-			
-			receipt.setReceiptID(receiptID);			
-			receipt.setDate(date);
-			receipt.setSales(sales);
-			receipt.setItems(items);
-			receipt.getCompany().setName(companyName);
-			receipt.getCompany().getCompanyAddress().setCountry(companyCountry);
-			receipt.getCompany().getCompanyAddress().setCity(companyCity);
-			receipt.getCompany().getCompanyAddress().setStreet(companyStreet);
-			receipt.getCompany().getCompanyAddress().setStreetNumber(companyStreetNumber);
-			salesman.getReceipts().add(receipt);
+		Receipt receipt = new Receipt();			
+		if(kind.equals("Shirts")) {
+			receipt.setKind("Shirt");
+		}
+		else if (kind.equals("Skirts")) {
+			receipt.setKind("Skirt");
+		}
+		else if (kind.equals("Trousers")) {
+			receipt.setKind("Trousers");
+		}
+		else {
+			receipt.setKind("Coat");
+		}
+		
+		receipt.setReceiptID(receiptID);
+		receipt.setDate(date);
+		receipt.setSales(sales);
+		receipt.setItems(items);
+		receipt.getCompany().setName(companyName);
+		receipt.getCompany().getCompanyAddress().setCountry(companyCountry);
+		receipt.getCompany().getCompanyAddress().setCity(companyCity);
+		receipt.getCompany().getCompanyAddress().setStreet(companyStreet);
+		receipt.getCompany().getCompanyAddress().setStreetNumber(companyStreetNumber);
+		salesman.getReceipts().add(receipt);
 	}
+
 	public Salesman getSalesman() {
 		return salesman;
 	}

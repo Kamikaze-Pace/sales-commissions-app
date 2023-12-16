@@ -18,10 +18,8 @@ public class XMLInput extends Input {
 	}
     public void readFile() {
         try {
-        	DocumentBuilderFactory docBuilderFactory 
-			= DocumentBuilderFactory.newInstance();
-        	DocumentBuilder docBuilder
-			= docBuilderFactory.newDocumentBuilder();
+        	DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+        	DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
         	Document doc = docBuilder.parse(inputFile);
         	 
         	doc.getDocumentElement().normalize();
@@ -70,10 +68,6 @@ public class XMLInput extends Input {
             	
 				addReceipt();
             }
-
-        	
-            
-        
             
         } catch (Exception e) {
         	JOptionPane.showMessageDialog

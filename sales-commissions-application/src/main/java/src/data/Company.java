@@ -17,9 +17,7 @@ public class Company {
 			this.companyName = name;
 		}
 		
-		
 		public Address getCompanyAddress(){
-			
 			return companyAddress;
 		}
 }
