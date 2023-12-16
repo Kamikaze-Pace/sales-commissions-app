@@ -3,14 +3,14 @@ package data;
 
 import java.util.Vector;
 
-public class Agent {
+public class Salesman {
 	private String name;
 	private String afm;
 	private Vector <Receipt> allReceipts;
 	private FileAppender fileAppender;
 	
 	
-	public Agent(){
+	public Salesman(){
 		allReceipts = new Vector<Receipt>();
 	}
 	

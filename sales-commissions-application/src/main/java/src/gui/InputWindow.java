@@ -1,6 +1,6 @@
-package gui;
-import input.TXTInput;
-import input.XMLInput;
+package src.gui;
+import src.input.TXTInput;
+import src.input.XMLInput;
 
 import java.awt.BorderLayout;
 
@@ -29,7 +29,7 @@ import java.awt.SystemColor;
 
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import data.Agent;
+import src.data.Salesman;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -41,9 +41,9 @@ public class InputWindow extends JDialog {
 	private final JPanel inputWindowPanel = new JPanel();
 	private DefaultListModel <String> listModel = new DefaultListModel <String>();
 	private JList <String> agentsList = new JList <String>();
-	private Vector <Agent> allAgents;	//TODO Change from vector to arraylist and from Agent to Salesman
-	private  Agent agent = new Agent();	//TODO Change from Agent to Salesman
-	private Agent selectedAgent = null;	//TODO Change from Agent to Salesman
+	private Vector <Salesman> allAgents;	//TODO Change from vector to arraylist and from Agent to Salesman
+	private  Salesman salesman = new Salesman();	//TODO Change from Agent to Salesman
+	private Salesman selectedSalesman = null;	//TODO Change from Agent to Salesman
 	static InputWindow dialog = new InputWindow();
 	@SuppressWarnings("unused")
 	private File inputFile;
@@ -71,7 +71,7 @@ public class InputWindow extends JDialog {
 	}
 	
 	public void initialise() {
-		allAgents = new Vector <Agent>();
+		allAgents = new Vector <Salesman>();
 		
 		setBackground(new Color(0, 0, 0));
 		setBounds(100, 100, 736, 472);
@@ -202,12 +202,12 @@ public class InputWindow extends JDialog {
 			File recieptFileTXT = TXTFileChooser.getSelectedFile();
 			TXTInput inputFileTXT = new TXTInput(recieptFileTXT);	
 			inputFileTXT.readFile();
-			agent = inputFileTXT.getAgent();
-			agent.setFileType("TXT");
-			agent.getFileAppender().setFileToAppend(recieptFileTXT);				
-			allAgents.add(agent);
+			salesman = inputFileTXT.getSalesman();
+			salesman.setFileType("TXT");
+			salesman.getFileAppender().setFileToUpdate(recieptFileTXT);				
+			allAgents.add(salesman);
 			for(int i = 0; i< listModel.getSize(); i++){
-				if(agent.getName().equals(listModel.getElementAt(i))){
+				if(salesman.getName().equals(listModel.getElementAt(i))){
 					agentDuplicate = true;
 
 				}
@@ -217,7 +217,7 @@ public class InputWindow extends JDialog {
 
 			}
 			else{
-				listModel.addElement(agent.getName());
+				listModel.addElement(salesman.getName());
 				agentsList.setModel(listModel);
 				fileTypeFlag = "TXT";
 			}
@@ -242,12 +242,12 @@ public class InputWindow extends JDialog {
 			File recieptFileXML = XMLFileChooser.getSelectedFile();
 			XMLInput inputFileXML = new XMLInput(recieptFileXML);	
 			inputFileXML.readFile();
-			agent = inputFileXML.getAgent();
-			agent.setFileType("XML");
-			agent.getFileAppender().setFileToAppend(recieptFileXML);				
-			allAgents.add(agent);
+			salesman = inputFileXML.getSalesman();
+			salesman.setFileType("XML");
+			salesman.getFileAppender().setFileToUpdate(recieptFileXML);				
+			allAgents.add(salesman);
 			for(int i = 0; i< listModel.getSize(); i++){
-				if(agent.getName().equals(listModel.getElementAt(i))){
+				if(salesman.getName().equals(listModel.getElementAt(i))){
 					agentDuplicate = true;
 
 				}
@@ -257,7 +257,7 @@ public class InputWindow extends JDialog {
 
 			}
 			else{
-				listModel.addElement(agent.getName());
+				listModel.addElement(salesman.getName());
 				agentsList.setModel(listModel);
 				fileTypeFlag = "XML";
 			}
@@ -280,7 +280,7 @@ public class InputWindow extends JDialog {
             for(int i=0; i<allAgents.size(); i++){
                 if(agentName.equals(allAgents.get(i).getName())){
                 	
-                		selectedAgent = allAgents.get(i);
+                		selectedSalesman = allAgents.get(i);
                 		break;
                 		
                 }
@@ -295,7 +295,7 @@ public class InputWindow extends JDialog {
 
 		}
 		else{
-			SelectionWindow sw = new SelectionWindow(dialog,selectedAgent,fileTypeFlag);
+			SelectionWindow sw = new SelectionWindow(dialog, selectedSalesman, fileTypeFlag);
 			this.setVisible(false);
 			sw.setVisible(true);
 		}	

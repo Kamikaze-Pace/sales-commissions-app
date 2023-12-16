@@ -1,24 +1,24 @@
-package data;
+package src.output;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class FileAppenderTXT extends FileAppender{
+public class TXTReceiptFileUpdater extends ReceiptFileUpdater{
 
-	public  void setFileToAppend(File fileToAppend) {
+	public  void setFileToUpdate(File fileToUpdate) {
 		
-		this.fileToAppend = fileToAppend;
+		this.fileToUpdate = fileToUpdate;
 		
 	}
 
-	public void appendFile(){
+	public void updateFile(){
 		System.out.println("Mpike sto TXT");
-		System.out.println(fileToAppend.getAbsolutePath());
+		System.out.println(fileToUpdate.getAbsolutePath());
 
 		try {
 			
-			FileWriter fileWriter = new FileWriter(fileToAppend,true);		
+			FileWriter fileWriter = new FileWriter(fileToUpdate,true);		
 			fileWriter.write("\n");
 			fileWriter.write("Receipt ID: ");
 			fileWriter.write(receiptID);
